@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #quadro {
+        display: grid;
+        max-width: 150px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      }
+
+      .pixel {
+        background-color: tomato;
+        border: solid 1px;
+        height: 25px;
+        text-align: center;
+        font-size: 20px;
+      }
+
+      form {
+        display: flex;
+        justify-content: space-between;
+        max-width: 150px;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form name="options">
+        <div>
+          <input type="radio" checked id="opt1" name="fill" value="o" />
+          <label for="opt1">o</label>
+        </div>
+        <div>
+          <input type="radio" id="opt2" name="fill" value="#" />
+          <label for="opt2">#</label>
+        </div>
+        <div>
+          <input type="radio" id="opt3" name="fill" value="" />
+          <label for="opt3">Limpar</label>
+        </div>
+      </form>
+      <div id="quadro"></div>
+    </div>
+
+    <script>
+      const quadro = document.getElementById("quadro");
+
+      function handlerCLick(e) {
+        e.target.innerText = document.forms[0].elements.fill.value;
+      }
+
+      for (let index = 0; index < 20; index++) {
+        let newdiv = document.createElement("div");
+        newdiv.classList.add("pixel");
+        newdiv.id = "pixel-" + index;
+        quadro.appendChild(newdiv);
+
+        newdiv.onclick = handlerCLick;
+      }
+    </script>
+  </body>
+</html>
